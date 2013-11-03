@@ -36,7 +36,7 @@ class TimeSync implements Plugin{
     private function startTimer($interval){
         try{
             //Create new thread instance
-            $this->timer = new TimedAnnouncer($this, $this->interval, $this->offset);
+            $this->timer = new TimeSyncThread($this, $this->interval, $this->offset);
             
             //Start the thread
             $this->timer->start();
@@ -53,7 +53,7 @@ class TimeSync implements Plugin{
     
 }
     
-class TimedAnnouncer extends Thread {
+class TimeSyncThread extends Thread {
     private $plugin;
     public $interval;
     public $offset;
